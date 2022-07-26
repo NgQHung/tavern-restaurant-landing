@@ -1,0 +1,13 @@
+.homeImg {
+    position: absolute;
+    height: 640px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -5;
+}
+.home {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}

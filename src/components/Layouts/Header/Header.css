@@ -1,0 +1,23 @@
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+.nav {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 72px;
+}
+.menu .menu__list {
+    display: flex;
+    column-gap: 20px;
+}
+
+.account .account__list {
+    display: flex;
+    column-gap: 20px;
+}
