@@ -1,3 +1,6 @@
+.main {
+    display: block;
+}
 .homeImg {
     position: absolute;
     height: 640px;
@@ -5,11 +8,12 @@
     left: 0;
     width: 100%;
     z-index: -5;
+    /* height: 100%; */
 }
 .home {
     display: flex;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 7rem;
 }
 .home__img {
     display: flex;
@@ -45,6 +49,7 @@ h2 {
 .home__button {
     display: flex;
     text-align: center;
+    align-items: center;
     gap: 20px;
 }
 .order {
@@ -56,8 +61,8 @@ h2 {
     border: none;
 }
 .order:hover {
-    font-size: 0.98rem;
-    transition: 0.4s;
+    transform: scale(0.98);
+    transition: 0.4s ease-out;
     cursor: pointer;
 }
 .learn__more {
@@ -67,15 +72,23 @@ h2 {
     color: black;
     font-weight: 600;
 }
+.home__learn {
+    position: relative;
+}
 .learn__more:hover {
     cursor: pointer;
 }
 .learn__more::after {
+    content: "";
     position: absolute;
     width: 0%;
     bottom: -0.15rem;
     left: 0;
-    background-color: var(--green-color);
+    background-color: #33a593;
     height: 3px;
+    transition: 0.4s ease-out;
+}
+.learn__more:hover::after {
+    width: 100%;
     transition: 0.4s ease-out;
 }

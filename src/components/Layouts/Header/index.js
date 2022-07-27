@@ -19,7 +19,9 @@ function Header() {
         <Fragment>
             <div className={`header ${scrollHeaderCss ? "scroll__header" : ""}`}>
                 <div className="nav container">
-                    <div className="logo">LOGO</div>
+                    <div className="logo">
+                        Tav<span>ern</span>
+                    </div>
                     <div className="menu">
                         <ul className="menu__list">
                             <li>Home</li>

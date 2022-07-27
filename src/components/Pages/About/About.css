@@ -1,0 +1,15 @@
+.about {
+    margin-top: 5rem;
+}
+.about__title {
+    text-align: center;
+}
+.text {
+    padding: 0 20rem;
+}
+.about__card {
+    border: 1px solid #ececec;
+    border-radius: 6px;
+    padding: 1.5rem;
+    width: 327px;
+}

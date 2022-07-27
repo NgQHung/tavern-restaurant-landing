@@ -1,17 +1,15 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import "./Main.css";
 function Main() {
     return (
         <Fragment>
             <div className="main">
-                <div className="main__img">
-                    <img
-                        className="homeImg"
-                        src="https://tavern-restaurant-landing-page.vercel.app/imgs/Base.png"
-                        alt="this is the main pic"
-                        // style="width: 100%"
-                    />
-                </div>
+                <img
+                    className="homeImg"
+                    src="https://tavern-restaurant-landing-page.vercel.app/imgs/Base.png"
+                    alt="this is the main pic"
+                    // style="width: 100%"
+                />
                 <div className="home section container grid">
                     <div className="home__data">
                         <div className="home__heading">
@@ -30,7 +28,9 @@ function Main() {
                         </div>
                         <div className="home__button">
                             <button className="order">Order Food</button>
-                            <button className="learn__more">Learn More</button>
+                            <div className="home__learn">
+                                <button className="learn__more">Learn More</button>
+                            </div>
                         </div>
                     </div>
                     <div className="home__img home__grid">
