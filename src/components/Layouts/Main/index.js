@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./Main.css";
 function Main() {
     return (
@@ -15,12 +15,17 @@ function Main() {
                 <div className="home section container grid">
                     <div className="home__data">
                         <div className="home__heading">
-                            <h2>Giving your Hunger a new Option.</h2>
+                            <h2>
+                                Giving your <br />
+                                Hunger a new
+                                <br />
+                                Option.
+                            </h2>
                         </div>
                         <div className="home__subtext">
                             <p>
-                                Want a delicious meal, but no time we will deliver it hot and yummy
-                                to your doorstep.
+                                Want a delicious meal, but no time we will deliver it
+                                <br /> hot and yummy to your doorstep.
                             </p>
                         </div>
                         <div className="home__button">
@@ -28,7 +33,24 @@ function Main() {
                             <button className="learn__more">Learn More</button>
                         </div>
                     </div>
-                    <div className="home__img"></div>
+                    <div className="home__img home__grid">
+                        <div className="home__mainImg">
+                            <img
+                                src="https://tavern-restaurant-landing-page.vercel.app/imgs/home.png"
+                                alt="pic"
+                            />
+                        </div>
+                        <div className="home__subImg">
+                            <img
+                                src="https://tavern-restaurant-landing-page.vercel.app/imgs/home2.png"
+                                alt="pic"
+                            />
+                            <img
+                                src="https://tavern-restaurant-landing-page.vercel.app/imgs/home3.png"
+                                alt="pic"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </Fragment>

@@ -1,10 +1,23 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./Header.css";
 
 function Header() {
+    const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
+
+    const changeHeader = () => {
+        if (window.scrollY >= 66) {
+            setScrollHeaderCss(true);
+        } else {
+            setScrollHeaderCss(false);
+        }
+    };
+    useEffect(() => {
+        changeHeader();
+        window.addEventListener("scroll", changeHeader);
+    });
     return (
         <Fragment>
-            <div className="header">
+            <div className={`header ${scrollHeaderCss ? "scroll__header" : ""}`}>
                 <div className="nav container">
                     <div className="logo">LOGO</div>
                     <div className="menu">
