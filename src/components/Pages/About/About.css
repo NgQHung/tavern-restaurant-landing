@@ -3,13 +3,32 @@
 }
 .about__title {
     text-align: center;
+    margin-bottom: 3rem;
+}
+.title {
+    font-size: 2rem;
+    font-weight: 700;
 }
 .text {
     padding: 0 20rem;
+    font-size: 10px;
 }
 .about__card {
     border: 1px solid #ececec;
     border-radius: 6px;
     padding: 1.5rem;
     width: 327px;
+}
+.about__icon {
+    background-color: #33a593;
+    height: 60px;
+    width: 60px;
+}
+.about__category {
+    margin: 1rem 0;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.about__description {
+    font-size: 1rem;
 }
