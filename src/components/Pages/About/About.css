@@ -32,3 +32,8 @@
 .about__description {
     font-size: 1rem;
 }
+.about__list {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}

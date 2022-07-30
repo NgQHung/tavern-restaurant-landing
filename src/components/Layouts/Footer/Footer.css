@@ -1,0 +1,54 @@
+.footer {
+}
+.footer__container {
+    padding: 5rem 0 1.5rem;
+    background-color: #061210;
+}
+.footer__logo {
+    font-weight: 600;
+    color: white;
+    font-size: 1.25rem;
+}
+.footer__logo span {
+    color: #33a593;
+}
+.footer__text {
+    font-size: 12px;
+    color: #b4bdbc;
+    margin: 1.5rem 0;
+}
+.footer__title {
+    color: white;
+    font-weight: 600;
+}
+.footer__line {
+    display: grid;
+    grid-template-columns: 30% 10% 15% 17% 20%;
+}
+.footer__company {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.footer__features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.footer__features a {
+    color: #b4bdbc;
+    font-size: 12px;
+}
+.footer__company a {
+    color: #b4bdbc;
+    font-size: 12px;
+}
+.footer__service {
+    font-size: 12px;
+    color: #b4bdbc;
+    text-align: center;
+    opacity: 0.7;
+}
+.footer__service p {
+    margin-top: 1.5rem;
+}

@@ -1,0 +1,21 @@
+.cta__data {
+}
+.cta__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+.cta__image img {
+    height: 960px;
+    width: auto;
+}
+.cta__subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.85rem;
+}
+.cta__subtext {
+    font-size: 0.813rem;
+    margin-bottom: 2rem;
+}

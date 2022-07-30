@@ -1,0 +1,35 @@
+.menu__arrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icons {
+    display: flex;
+}
+.arrow__left {
+    height: 40px;
+    width: 40px;
+    background-color: #fffaf8;
+    border: 1px solid #555b5a;
+    border-radius: 6px;
+    opacity: 0.35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrow__left {
+    cursor: not-allowed;
+}
+.arrow__right {
+    height: 40px;
+    width: 40px;
+    color: white;
+    background-color: #33a593;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrow__right:hover {
+    cursor: pointer;
+}
