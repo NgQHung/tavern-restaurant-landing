@@ -52,3 +52,15 @@
 .footer__service p {
     margin-top: 1.5rem;
 }
+.footer__data {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #b4bdbc;
+}
+.footer__data p {
+    font-size: 12px;
+}
+.footer__icon {
+    color: #33a593;
+}

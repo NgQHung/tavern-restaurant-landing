@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import "./Footer.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faEnvelope, faLocationPin } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
     return (
@@ -37,6 +39,24 @@ function Footer() {
                         </div>
                         <div className="footer__support">
                             <div className="footer__title">Support</div>
+                            <div className="footer__data">
+                                <div className="footer__icon">
+                                    <FontAwesomeIcon icon={faPhone} />
+                                </div>
+                                <p>+880 1706 499 216</p>
+                            </div>
+                            <div className="footer__data">
+                                <div className="footer__icon">
+                                    <FontAwesomeIcon icon={faLocationPin} />
+                                </div>
+                                <p>email@gmail.com</p>
+                            </div>
+                            <div className="footer__data">
+                                <div className="footer__icon">
+                                    <FontAwesomeIcon icon={faEnvelope} />
+                                </div>
+                                <p>4/5 Seddon Park, Hamilton New Zealand.</p>
+                            </div>
                         </div>
                     </div>
                     <div className="footer__service">
