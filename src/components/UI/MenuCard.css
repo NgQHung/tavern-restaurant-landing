@@ -1,6 +1,6 @@
 .menu__card {
-    width: 245px;
-    height: 340px;
+    min-width: 245px;
+    min-height: 340px;
     margin-right: 15px;
     border: 1px solid #ececec;
 }
@@ -11,8 +11,9 @@
     margin: 5px 0 8px;
 }
 .menu__image img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    pointer-events: none;
+    /* height: auto; */
 }
 .menu__data {
     padding: 0.25rem 1rem 1.25rem;

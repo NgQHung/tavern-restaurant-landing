@@ -22,7 +22,7 @@
 .logo span {
     color: #33a593;
 }
-.menu .menu__list {
+.nav .nav__list {
     display: flex;
     column-gap: 20px;
 }

@@ -63,4 +63,5 @@
 }
 .footer__icon {
     color: #33a593;
+    min-width: 20px;
 }

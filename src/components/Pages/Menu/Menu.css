@@ -33,3 +33,12 @@
 .arrow__right:hover {
     cursor: pointer;
 }
+.menu__list {
+    overflow: hidden;
+}
+.menu__list__container {
+    display: flex;
+    cursor: grab;
+}
+.swiped {
+}

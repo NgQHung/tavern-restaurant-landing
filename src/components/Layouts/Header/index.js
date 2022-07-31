@@ -22,8 +22,8 @@ function Header() {
                     <div className="logo">
                         Tav<span>ern</span>
                     </div>
-                    <div className="menu">
-                        <ul className="menu__list">
+                    <div className="nav">
+                        <ul className="nav__list">
                             <li>Home</li>
                             <li>About Us</li>
                             <li>Menu</li>
