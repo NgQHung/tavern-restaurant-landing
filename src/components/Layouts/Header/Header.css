@@ -5,7 +5,6 @@
     left: 0;
     right: 0;
     z-index: 100;
-    /* display: flex; */
 }
 .nav {
     display: flex;
@@ -40,12 +39,10 @@ button {
 }
 .login {
     border: none;
-    /* color: #555b5a; */
 }
 button:hover {
     cursor: pointer;
 }
 .signup:hover {
     background-color: #33a593;
-    /* color: #fff; */
 }

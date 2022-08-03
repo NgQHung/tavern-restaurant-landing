@@ -26,7 +26,7 @@ function Testimonial() {
     return (
         <Fragment>
             <div className="section">
-                <div className="testimonial">
+                <div className="testimonial" id="testimonial">
                     {/* {TESTIMONIAL__DATA.map((data) => ( */}
                     <div className="testimonial__container grid">
                         <div className="testimonial__image">

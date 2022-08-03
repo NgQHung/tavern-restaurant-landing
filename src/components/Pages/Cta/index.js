@@ -4,7 +4,7 @@ import "./Cta.css";
 function Cta() {
     return (
         <Fragment>
-            <div className="cta section">
+            <div className="cta section" id="cta">
                 <div className="cta__container container grid">
                     <motion.div
                         initial={{ y: "-10vw", opacity: 0 }}

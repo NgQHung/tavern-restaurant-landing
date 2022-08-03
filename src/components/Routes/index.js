@@ -13,8 +13,8 @@ function Routee() {
                 <Route path="/home" element={<Main />}></Route>
                 <Route path="/about" element={<About />}></Route>
                 <Route path="/menu" element={<Menu />}></Route>
-                <Route path="testimonial" element={<Testimonial />}></Route>
-                <Route path="cta" element={<Cta />}></Route>
+                <Route path="/testimonial" element={<Testimonial />}></Route>
+                <Route path="/cta" element={<Cta />}></Route>
             </Routes>
         </div>
     );

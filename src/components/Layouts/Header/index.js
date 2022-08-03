@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Router, Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "framer-motion";
 import "./Header.css";
 
 function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
     const param = useParams();
-    console.log(param);
     const changeHeader = () => {
         if (window.scrollY >= 66) {
             setScrollHeaderCss(true);
@@ -28,19 +28,29 @@ function Header() {
                     <div className="nav">
                         <ul className="nav__list">
                             <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <a href={"#home"}>Home</a>
+                                <Link smooth to="#home">
+                                    Home
+                                </Link>
                             </motion.li>
                             <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <a href={"#about"}>About Us</a>
+                                <Link smooth to="#about">
+                                    About Us
+                                </Link>
                             </motion.li>
                             <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <a href={"#menu"}>Menu</a>
+                                <Link smooth to="#menu">
+                                    Menu
+                                </Link>
                             </motion.li>
                             <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <a href={"#testimonial"}>Review</a>
+                                <Link smooth to="#testimonial">
+                                    Review
+                                </Link>
                             </motion.li>
                             <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <a href={"#cta"}>Contact Us</a>
+                                <Link smooth to="#cta">
+                                    Contact Us
+                                </Link>
                             </motion.li>
                         </ul>
                     </div>
