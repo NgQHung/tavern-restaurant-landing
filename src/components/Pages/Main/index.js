@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import "./Main.css";
+import { motion } from "framer-motion";
 function Main() {
     return (
         <Fragment>
@@ -11,7 +12,12 @@ function Main() {
                     // style="width: 100%"
                 />
                 <div className="home section container grid">
-                    <div className="home__data">
+                    <motion.div
+                        initial={{ x: "-10vw", opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.5, type: "tween" }}
+                        className="home__data"
+                    >
                         <div className="home__heading">
                             <h2>
                                 Giving your <br />
@@ -32,15 +38,25 @@ function Main() {
                                 <button className="learn__more">Learn More</button>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                     <div className="home__img home__grid">
-                        <div className="home__mainImg">
+                        <motion.div
+                            initial={{ x: "10vw", opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.5, type: "tween" }}
+                            className="home__mainImg"
+                        >
                             <img
                                 src="https://tavern-restaurant-landing-page.vercel.app/imgs/home.png"
                                 alt="pic"
                             />
-                        </div>
-                        <div className="home__subImg">
+                        </motion.div>
+                        <motion.div
+                            initial={{ x: "10vw", opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.5, type: "tween" }}
+                            className="home__subImg"
+                        >
                             <img
                                 src="https://tavern-restaurant-landing-page.vercel.app/imgs/home2.png"
                                 alt="pic"
@@ -49,7 +65,7 @@ function Main() {
                                 src="https://tavern-restaurant-landing-page.vercel.app/imgs/home3.png"
                                 alt="pic"
                             />
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

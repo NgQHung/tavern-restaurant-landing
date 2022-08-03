@@ -33,8 +33,12 @@ function Header() {
                     </div>
                     <div className="account">
                         <ul className="account__list">
-                            <li>Login</li>
-                            <li>Sign up</li>
+                            <button className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}>
+                                <li>Login</li>
+                            </button>
+                            <button className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}>
+                                <li>Sign up</li>
+                            </button>
                         </ul>
                     </div>
                 </div>

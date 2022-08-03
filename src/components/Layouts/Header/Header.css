@@ -9,14 +9,11 @@
 }
 .nav {
     display: flex;
-    /* margin-left: auto;
-    margin-right: auto; */
     height: 72px;
     align-items: center;
     justify-content: space-between;
 }
 .logo {
-    /* color: #061210; */
     font-weight: 600;
 }
 .logo span {
@@ -27,7 +24,28 @@
     column-gap: 20px;
 }
 
-.account .account__list {
+/* .account {
+    color: #ffff;
+} */
+.account__list {
     display: flex;
     column-gap: 20px;
+}
+button {
+    padding: 0.75rem;
+    border: 1px solid #b4bdbc;
+    background-color: transparent;
+    border-radius: 6px;
+    font-weight: 600;
+}
+.login {
+    border: none;
+    /* color: #555b5a; */
+}
+button:hover {
+    cursor: pointer;
+}
+.signup:hover {
+    background-color: #33a593;
+    color: #fff;
 }

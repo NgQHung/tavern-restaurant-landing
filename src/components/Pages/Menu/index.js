@@ -70,30 +70,34 @@ function Menu() {
     const current = useSelector((state) => state.swipeSlide.current);
     const indexSwiped = useSelector((state) => state.swipeSlide.indexSwiped);
     const swipeClicked = useSelector((state) => state.swipeSlide.swipeClicked);
-    const defaultIndex = 4;
+    // const defaultIndex = 4;
     const dispatch = useDispatch();
 
     const [width, setWidth] = useState(0);
+    const [scroll, setScroll] = useState();
 
     const swipe = useRef();
-
-    useEffect(() => {
-        console.log(swipe.current.scrollWidth);
-        setWidth(swipe.current.scrollWidth - swipe.current.offsetWidth);
-    }, []);
+    // const
 
     const swipeHandler = (e) => {
         e.preventDefault();
-        dispatch(swipeSliceActions.swipe(defaultIndex));
-        console.log(current);
-        console.log(indexSwiped);
+        dispatch(swipeSliceActions.swipe(1));
+        swipe.current.scrollLeft += 260;
     };
+    useEffect(() => {
+        setWidth(swipe.current.scrollWidth - swipe.current.offsetWidth);
+    }, []);
 
     return (
         <Fragment>
             <div className="menu section">
                 <div className="menu__container container grid">
-                    <div className="menu__arrow">
+                    <motion.div
+                        initial={{ y: "-10vh", opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.5, type: "tween" }}
+                        className="menu__arrow"
+                    >
                         <div className="menu__title">
                             <h2>Order Best Menu</h2>
                             <p className="menu__text" style={{ color: "#555B5A" }}>
@@ -101,17 +105,22 @@ function Menu() {
                                 <br /> food that suit to you.
                             </p>
                         </div>
-                        <div className="swiper__container container">
-                            <div className="icons grid">
+                        <div className="swiper__container">
+                            <motion.div
+                                // initial={{ x: "100vw", opacity: 0 }}
+                                // animate={{ x: 0, opacity: 1 }}
+                                // transition={{ delay: 1, type: "spring" }}
+                                className="icons grid"
+                            >
                                 <div className="arrow__left">
                                     <FontAwesomeIcon icon={faArrowLeft} />
                                 </div>
                                 <div onClick={swipeHandler} className="arrow__right">
                                     <FontAwesomeIcon icon={faArrowRight} />
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                     <motion.div className="menu__list">
                         <motion.div
                             drag="x"
@@ -121,9 +130,13 @@ function Menu() {
                         >
                             {MENU__DATA.map((item, index) => {
                                 return (
-                                    <motion.div>
+                                    <motion.div
+                                        initial={{ y: "10vh", opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{ delay: 0.5, type: "tween" }}
+                                        key={item.id}
+                                    >
                                         <MenuCard
-                                            key={item.id}
                                             image={item.image}
                                             title={item.title}
                                             time={item.time}

@@ -39,6 +39,6 @@
 .menu__list__container {
     display: flex;
     cursor: grab;
-}
-.swiped {
+    /* overflow-x: scroll;
+    scroll-behavior: smooth; */
 }

@@ -34,7 +34,7 @@ p {
 
 .scroll__header {
     background-color: #061210;
-    box-shadow: 0 0 4px rgb(234 255 252 / 50%);
+    /* box-shadow: 0 0 4px rgb(234 255 252 / 50%); */
     color: white;
 }
 a {
