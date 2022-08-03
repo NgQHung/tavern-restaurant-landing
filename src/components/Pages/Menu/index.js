@@ -90,7 +90,12 @@ function Menu() {
 
     return (
         <Fragment>
-            <div className="menu section">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="menu section"
+                id="menu"
+            >
                 <div className="menu__container container grid">
                     <motion.div
                         initial={{ y: "-10vh", opacity: 0 }}
@@ -148,7 +153,7 @@ function Menu() {
                         </motion.div>
                     </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </Fragment>
     );
 }

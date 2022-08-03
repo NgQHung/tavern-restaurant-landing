@@ -1,9 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { Router, Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./Header.css";
 
 function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
-
+    const param = useParams();
+    console.log(param);
     const changeHeader = () => {
         if (window.scrollY >= 66) {
             setScrollHeaderCss(true);
@@ -24,11 +27,21 @@ function Header() {
                     </div>
                     <div className="nav">
                         <ul className="nav__list">
-                            <li>Home</li>
-                            <li>About Us</li>
-                            <li>Menu</li>
-                            <li>Review</li>
-                            <li>Contact Us</li>
+                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
+                                <a href={"#home"}>Home</a>
+                            </motion.li>
+                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
+                                <a href={"#about"}>About Us</a>
+                            </motion.li>
+                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
+                                <a href={"#menu"}>Menu</a>
+                            </motion.li>
+                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
+                                <a href={"#testimonial"}>Review</a>
+                            </motion.li>
+                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
+                                <a href={"#cta"}>Contact Us</a>
+                            </motion.li>
                         </ul>
                     </div>
                     <div className="account">

@@ -5,7 +5,7 @@ import "./About.css";
 function About() {
     return (
         <Fragment>
-            <div className="about section">
+            <div className="about section" id="about">
                 <motion.div
                     initial={{ y: "-10vh", opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}

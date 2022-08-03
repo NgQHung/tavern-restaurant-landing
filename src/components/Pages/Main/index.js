@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 function Main() {
     return (
         <Fragment>
-            <div className="main">
+            <div className="main" id="main">
                 <img
                     className="homeImg"
                     src="https://tavern-restaurant-landing-page.vercel.app/imgs/Base.png"
