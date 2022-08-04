@@ -6,6 +6,7 @@ import "./Header.css";
 
 function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
+    const [activeLink, setActiveLink] = useState("");
     const param = useParams();
     const changeHeader = () => {
         if (window.scrollY >= 66) {
@@ -14,10 +15,35 @@ function Header() {
             setScrollHeaderCss(false);
         }
     };
+
+    // Link handle
+    const linkHandler = (item) => {
+        if (item !== activeLink) {
+            setActiveLink(item);
+        }
+    };
+
     useEffect(() => {
         changeHeader();
         window.addEventListener("scroll", changeHeader);
     });
+
+    const motionCss1 = {
+        hidden: {
+            y: "-10vh",
+        },
+        visible: {
+            y: 0,
+        },
+        hover: {
+            scale: 1.1,
+            transition: {
+                repeat: Infinity,
+                repeatType: "reverse",
+            },
+        },
+    };
+
     return (
         <Fragment>
             <div className={`header ${scrollHeaderCss ? "scroll__header" : ""}`}>
@@ -27,28 +53,78 @@ function Header() {
                     </div>
                     <div className="nav">
                         <ul className="nav__list">
-                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <Link smooth to="#home">
+                            <motion.li
+                                variants={motionCss1}
+                                initial="hidden"
+                                animate="visible"
+                                whileHover="hover"
+                                onClick={() => linkHandler("main")}
+                            >
+                                <Link
+                                    smooth
+                                    to="#main"
+                                    className={activeLink === "main" ? "active-link" : ""}
+                                >
                                     Home
                                 </Link>
                             </motion.li>
-                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <Link smooth to="#about">
+                            <motion.li
+                                variants={motionCss1}
+                                initial="hidden"
+                                animate="visible"
+                                whileHover="hover"
+                                onClick={() => linkHandler("about")}
+                            >
+                                <Link
+                                    smooth
+                                    to="#about"
+                                    className={activeLink === "about" ? "active-link" : ""}
+                                >
                                     About Us
                                 </Link>
                             </motion.li>
-                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <Link smooth to="#menu">
+                            <motion.li
+                                variants={motionCss1}
+                                initial="hidden"
+                                animate="visible"
+                                whileHover="hover"
+                                onClick={() => linkHandler("menu")}
+                            >
+                                <Link
+                                    smooth
+                                    to="#menu"
+                                    className={activeLink === "menu" ? "active-link" : ""}
+                                >
                                     Menu
                                 </Link>
                             </motion.li>
-                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <Link smooth to="#testimonial">
+                            <motion.li
+                                variants={motionCss1}
+                                initial="hidden"
+                                animate="visible"
+                                whileHover="hover"
+                                onClick={() => linkHandler("testimonial")}
+                            >
+                                <Link
+                                    smooth
+                                    to="#testimonial"
+                                    className={activeLink === "testimonial" ? "active-link" : ""}
+                                >
                                     Review
                                 </Link>
                             </motion.li>
-                            <motion.li initial={{ y: "-10vh" }} animate={{ y: 0 }}>
-                                <Link smooth to="#cta">
+                            <motion.li
+                                variants={motionCss1}
+                                initial="hidden"
+                                animate="visible"
+                                whileHover="hover"
+                                onClick={() => linkHandler("cta")}
+                            >
+                                <Link
+                                    smooth
+                                    to="#cta"
+                                    className={activeLink === "cta" ? "active-link" : ""}
+                                >
                                     Contact Us
                                 </Link>
                             </motion.li>

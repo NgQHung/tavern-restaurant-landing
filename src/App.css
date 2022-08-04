@@ -43,10 +43,24 @@ p {
 .scroll__header {
     background-color: #061210;
     /* box-shadow: 0 0 4px rgb(234 255 252 / 50%); */
-    color: white !important;
+    color: white;
 }
 .scroll__header a {
-    color: white !important;
+    color: white;
+}
+.active-link {
+    color: #33a593 !important;
+}
+.active-link::before {
+    content: "";
+    position: absolute;
+    background-color: #33a593;
+    text-align: center;
+    left: 45%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    bottom: -0.5rem;
 }
 a {
     text-decoration: none;
