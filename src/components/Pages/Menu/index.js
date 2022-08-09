@@ -3,7 +3,6 @@ import MenuCard from "../../UI/MenuCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "./Menu.css";
-import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { swipeSliceActions } from "../../store/swipeSlide-slice";
 import { motion } from "framer-motion";
@@ -15,6 +14,7 @@ function Menu() {
     const [width, setWidth] = useState(0);
 
     const swipe = useRef();
+    // const
 
     const swipeHandler = (e) => {
         e.preventDefault();
