@@ -7,7 +7,7 @@
     /* color: #555b5a; */
 }
 html {
-    /* scroll-behavior: smooth; */
+    scroll-behavior: smooth;
 }
 
 li {
