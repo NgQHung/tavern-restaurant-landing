@@ -7,77 +7,14 @@ import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { swipeSliceActions } from "../../store/swipeSlide-slice";
 import { motion } from "framer-motion";
-const MENU__DATA = [
-    {
-        id: uuidv4(),
-        title: "Chicken Vegan Bowl",
-        price: "$ 18,00",
-        time: "20 min",
-        type: "Dinner/lunch",
-        image: "https://tavern-restaurant-landing-page.vercel.app/imgs/menu.png",
-    },
-    {
-        id: uuidv4(),
-        title: "Vegetable Route",
-        price: "$ 18,00",
-        time: "20 min",
-        type: "Dinner/lunch",
-        image: "https://tavern-restaurant-landing-page.vercel.app/imgs/menu3.png",
-    },
-    {
-        id: uuidv4(),
-        title: "Eggs Benedict Burger",
-        price: "$ 18,00",
-        time: "20 min",
-        type: "Dinner/lunch",
-        image: "https://tavern-restaurant-landing-page.vercel.app/imgs/menu2.png",
-    },
-    {
-        id: uuidv4(),
-        title: "Yummy Pizza",
-        price: "$ 18,00",
-        time: "20 min",
-        type: "Dinner/lunch",
-        image: "https://tavern-restaurant-landing-page.vercel.app/imgs/menu4.png",
-    },
-    {
-        id: uuidv4(),
-        title: "Chicken Vegan Bowl",
-        price: "$ 18,00",
-        time: "20 min",
-        type: "Dinner/lunch",
-        image: "https://tavern-restaurant-landing-page.vercel.app/imgs/menu3.png",
-    },
-    {
-        id: uuidv4(),
-        title: "Eggs Benedict Burger",
-        price: "$ 18,00",
-        time: "20 min",
-        type: "Dinner/lunch",
-        image: "https://tavern-restaurant-landing-page.vercel.app/imgs/menu2.png",
-    },
-    {
-        id: uuidv4(),
-        title: "Yummy Pizza",
-        price: "$ 18,00",
-        time: "20 min",
-        type: "Dinner/lunch",
-        image: "https://tavern-restaurant-landing-page.vercel.app/imgs/menu4.png",
-    },
-];
+import { MENU__DATA } from "../../data/Data";
 
 function Menu() {
-    const current = useSelector((state) => state.swipeSlide.current);
-    const indexSwiped = useSelector((state) => state.swipeSlide.indexSwiped);
-    const swipeClicked = useSelector((state) => state.swipeSlide.swipeClicked);
-    // const defaultIndex = 4;
     const dispatch = useDispatch();
 
     const [width, setWidth] = useState(0);
-    const [scroll, setScroll] = useState();
 
     const swipe = useRef();
-    // const
 
     const swipeHandler = (e) => {
         e.preventDefault();

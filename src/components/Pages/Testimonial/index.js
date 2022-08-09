@@ -2,25 +2,8 @@ import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { TESTIMONIAL__DATA } from "../../data/Data";
 import "./Testimonial.css";
-
-const TESTIMONIAL__DATA = [
-    {
-        author: "Kyle Mills",
-        position: "UI/UX Designer",
-        star: "",
-    },
-    {
-        author: "Kyle Mills",
-        position: "Frontend Developer",
-        star: "",
-    },
-    {
-        author: "Kyle Mills",
-        position: "Backend Developer",
-        star: "",
-    },
-];
 
 function Testimonial() {
     return (

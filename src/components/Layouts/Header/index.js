@@ -3,17 +3,30 @@ import { useParams } from "react-router-dom";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "framer-motion";
 import "./Header.css";
+import { useDispatch } from "react-redux";
+import { actionsAction } from "../../store/actions-slice";
 
 function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
     const [activeLink, setActiveLink] = useState("");
     const param = useParams();
+    const dispatch = useDispatch();
+
     const changeHeader = () => {
         if (window.scrollY >= 66) {
             setScrollHeaderCss(true);
         } else {
             setScrollHeaderCss(false);
         }
+    };
+
+    const signupHandler = () => {
+        dispatch(actionsAction.openSignup());
+        dispatch(actionsAction.handleCart());
+    };
+    const loginHandler = () => {
+        dispatch(actionsAction.openLogin());
+        dispatch(actionsAction.handleCart());
     };
 
     // Link handle
@@ -132,10 +145,16 @@ function Header() {
                     </div>
                     <div className="account">
                         <ul className="account__list">
-                            <button className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}>
+                            <button
+                                onClick={loginHandler}
+                                className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}
+                            >
                                 <li>Login</li>
                             </button>
-                            <button className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}>
+                            <button
+                                onClick={signupHandler}
+                                className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
+                            >
                                 <li>Sign up</li>
                             </button>
                         </ul>

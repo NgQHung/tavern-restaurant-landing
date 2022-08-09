@@ -1,0 +1,25 @@
+.title__modal {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+.input__section {
+    padding: 1rem 0 1rem 1rem;
+    display: flex;
+}
+.input__section input {
+    border-radius: 6px;
+}
+.input__place {
+    min-width: 11rem;
+}
+.input__button {
+    display: flex;
+    justify-content: space-between;
+}
+.input__button .submit:hover {
+    background-color: #33a593;
+}
+.input__button .cancel:hover {
+    background-color: red;
+}
