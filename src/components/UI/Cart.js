@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import Modal from "./Modal";
 import { useDispatch } from "react-redux/es/exports";
 import { actionsAction } from "../store/actions-slice";
@@ -7,10 +7,22 @@ import "./Cart.css";
 function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     const dispatch = useDispatch();
     const { title, firstName, lastName, email, password } = cartContent;
+    const [firstNameInput, setFirstnameInput] = useState("");
+    const [istouched, setIsTouched] = useState(false);
+
     const cancelHandler = () => {
         dispatch(actionsAction.closeSignup());
         dispatch(actionsAction.closeLogin());
     };
+
+    const firstNameInputChange = (e) => {
+        setFirstnameInput(e.target.value);
+    };
+    const firstNameInputIsTouched = (e) => {
+        setIsTouched(true);
+    };
+    const isValid = firstNameInput.trim() !== "";
+    const isInvalid = !isValid && istouched;
 
     const signupContent = (
         <Fragment>
@@ -20,7 +32,13 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
                 <div className="input__place">
                     <label>{firstName}</label>
                 </div>
-                <input type="text" />
+                <input
+                    className={`input ${isInvalid ? "invalid" : ""}`}
+                    onBlur={firstNameInputIsTouched}
+                    onChange={firstNameInputChange}
+                    type="text"
+                />
+                {isInvalid && <p>First name must not be empty</p>}
             </div>
             <div className="input__section">
                 <div className="input__place">

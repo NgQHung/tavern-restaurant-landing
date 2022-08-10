@@ -4,7 +4,6 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
-    /* color: #555b5a; */
 }
 html {
     scroll-behavior: smooth;
@@ -42,7 +41,6 @@ p {
 
 .scroll__header {
     background-color: #061210;
-    /* box-shadow: 0 0 4px rgb(234 255 252 / 50%); */
     color: white;
 }
 .scroll__header a {
