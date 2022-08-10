@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux/es/exports";
 import { actionsAction } from "../store/actions-slice";
 import "./Cart.css";
 import useInput from "../hooks/use-input";
-import { createData } from "../store/http-slice";
+import { createDataSignup } from "../store/http-slice";
 
 function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     const dispatch = useDispatch();
@@ -49,13 +49,16 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(
-            createData({
+            createDataSignup({
                 firstNameInput,
                 lastNameInput,
                 emailInput,
                 passwordInput,
             })
         );
+        // dispatch(createDataSignup({
+
+        // }))
     };
 
     const signupContent = (
