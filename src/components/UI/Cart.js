@@ -4,8 +4,12 @@ import { useDispatch } from "react-redux/es/exports";
 import { actionsAction } from "../store/actions-slice";
 import "./Cart.css";
 import useInput from "../hooks/use-input";
+import { createData } from "../store/http-slice";
 
 function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
+    const dispatch = useDispatch();
+    const { title, firstName, lastName, email, password } = cartContent;
+
     const {
         input: firstNameInput,
         isValid: firstNameIsValid,
@@ -13,8 +17,6 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
         inputOnBlur: firstNameOnBlur,
         inputOnChange: firstNameOnChange,
     } = useInput((input) => input.trim() !== "");
-    const dispatch = useDispatch();
-    const { title, firstName, lastName, email, password } = cartContent;
     const {
         input: lastNameInput,
         isValid: lastNameIsValid,
@@ -43,9 +45,18 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
         dispatch(actionsAction.closeSignup());
         dispatch(actionsAction.closeLogin());
     };
-    // console.log("firstNameInput", firstNameInput);
-    // console.log("firstNameIsValid: ", firstNameIsValid);
-    // console.log("firstNameIsValid: ", firstNameIsInValid);
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(
+            createData({
+                firstNameInput,
+                lastNameInput,
+                emailInput,
+                passwordInput,
+            })
+        );
+    };
 
     const signupContent = (
         <Fragment>
@@ -125,16 +136,18 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
 
     return (
         <Modal>
-            <div className="content__place">
-                {isLoginOpen && loginContent}
-                {isSignupOpen && signupContent}
-            </div>
-            <div className="input__button">
-                <button className="submit">Submit</button>
-                <button onClick={cancelHandler} className="cancel">
-                    Cancel
-                </button>
-            </div>
+            <form onSubmit={submitHandler}>
+                <div className="content__place">
+                    {isLoginOpen && loginContent}
+                    {isSignupOpen && signupContent}
+                </div>
+                <div className="input__button">
+                    <button className="submit">Submit</button>
+                    <button onClick={cancelHandler} className="cancel">
+                        Cancel
+                    </button>
+                </div>
+            </form>
         </Modal>
     );
 }
