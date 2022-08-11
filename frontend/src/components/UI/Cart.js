@@ -56,11 +56,9 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
                 passwordInput,
             })
         );
-        // dispatch(createDataSignup({
-
-        // }))
     };
 
+    // signup content
     const signupContent = (
         <Fragment>
             <h3 className="title__modal">{title}</h3>
@@ -119,6 +117,8 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
             </div>
         </Fragment>
     );
+
+    // login content
     const loginContent = (
         <Fragment>
             <h3 className="title__modal">{title}</h3>
