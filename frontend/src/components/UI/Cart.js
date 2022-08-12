@@ -1,18 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionsAction } from "../store/actions-slice";
 import "./Cart.css";
 import useInput from "../hooks/use-input";
 import { userLogin, userSignup } from "../store/http-slice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
+function Cart() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const isLoggedIn = useSelector((state) => state.authSlice.isLoggedIn);
-
-    const { title, firstName, lastName, email, password } = cartContent;
+    const location = useLocation();
 
     const {
         input: firstNameInput,
@@ -45,9 +43,8 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
         inputOnChange: passwordOnChange,
     } = useInput((input) => input.length > 5);
 
-    const cancelHandler = () => {
-        dispatch(actionsAction.closeSignup());
-        dispatch(actionsAction.closeLogin());
+    const backHandler = () => {
+        navigate("/");
     };
 
     const signupHandler = (e) => {
@@ -76,11 +73,11 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     // signup content
     const signupContent = (
         <Fragment>
-            <h3 className="title__modal">{title}</h3>
+            <h3 className="title__modal">Signup Modal</h3>
 
-            {/* <div className="input__section">
+            <div className="input__section">
                 <div className="input__place">
-                    <label>{firstName}</label>
+                    <label>Your First Name</label>
                 </div>
                 <input
                     className={`input ${firstNameHasError ? "invalid" : ""}`}
@@ -93,7 +90,7 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
             </div>
             <div className="input__section">
                 <div className="input__place">
-                    <label>{lastName}</label>
+                    <label>Your Last Name</label>
                 </div>
                 <input
                     type="text"
@@ -103,10 +100,10 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
                     value={lastNameInput}
                 />
                 {lastNameHasError && <p>Last name must not be empty</p>}
-            </div> */}
+            </div>
             <div className="input__section">
                 <div className="input__place">
-                    <label>{email}</label>
+                    <label>Your Email</label>
                 </div>
                 <input
                     type="text"
@@ -119,7 +116,7 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
             </div>
             <div className="input__section">
                 <div className="input__place">
-                    <label>{password}</label>
+                    <label>Your Password</label>
                 </div>
                 <input
                     type="text"
@@ -136,10 +133,10 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     // login content
     const loginContent = (
         <Fragment>
-            <h3 className="title__modal">{title}</h3>
+            <h3 className="title__modal">Login Modal</h3>
             <div className="input__section">
                 <div className="input__place">
-                    <label>{email}</label>
+                    <label>Your Email</label>
                 </div>
                 <input
                     type="text"
@@ -152,7 +149,7 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
             </div>
             <div className="input__section">
                 <div className="input__place">
-                    <label>{password}</label>
+                    <label>Your Password</label>
                 </div>
                 <input
                     type="text"
@@ -166,22 +163,23 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
             </div>
         </Fragment>
     );
+    const pathName = location.pathname;
 
     return (
-        <Modal>
-            <form onSubmit={isLoginOpen ? loginHandler : signupHandler}>
-                <div className="content__place">
-                    {isLoginOpen && loginContent}
-                    {isSignupOpen && signupContent}
-                </div>
-                <div className="input__button">
-                    <button className="submit">Submit</button>
-                    <button onClick={cancelHandler} className="cancel">
-                        Cancel
-                    </button>
-                </div>
-            </form>
-        </Modal>
+        // <Modal>
+        <form onSubmit={pathName === "/login" ? loginHandler : signupHandler}>
+            <div className="content__place">
+                {pathName === "/login" && loginContent}
+                {pathName === "/signup" && signupContent}
+            </div>
+            <div className="input__button">
+                <button className="submit">Submit</button>
+                <button onClick={backHandler} className="cancel">
+                    Back
+                </button>
+            </div>
+        </form>
+        // </Modal>
     );
 }
 

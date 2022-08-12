@@ -6,20 +6,8 @@ const actionsSlice = createSlice({
     name: "actions",
     initialState: initialValue,
     reducers: {
-        openSignup(state) {
-            state.isSignupOpen = true;
-        },
-        openLogin(state) {
-            state.isLoginOpen = true;
-        },
-        closeLogin(state) {
-            state.isLoginOpen = false;
-        },
-        closeSignup(state) {
-            state.isSignupOpen = false;
-        },
-        handleCart(state) {
-            if (state.isSignupOpen) {
+        handleCart(state, action) {
+            if (action.payload === "/signup") {
                 state.cartContent = {
                     title: "Signup Modal",
                     firstName: "Your First Name",
@@ -27,7 +15,7 @@ const actionsSlice = createSlice({
                     email: "Enter Your E-mail",
                     password: "Enter Your password",
                 };
-            } else if (state.isLoginOpen) {
+            } else if (action.payload === "/login") {
                 state.cartContent = {
                     title: "Login Modal",
                     email: "Enter Your E-mail",

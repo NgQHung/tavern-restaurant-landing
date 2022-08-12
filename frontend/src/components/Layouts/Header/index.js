@@ -155,7 +155,7 @@ function Header() {
                                     onClick={loginHandler}
                                     className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}
                                 >
-                                    Login
+                                    <Link to="/login">Login</Link>
                                 </button>
                             )}
                             {!isLoggedIn && (
@@ -163,7 +163,7 @@ function Header() {
                                     onClick={signupHandler}
                                     className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
                                 >
-                                    Sign up
+                                    <Link to="/signup">Sign up</Link>
                                 </button>
                             )}
                             {isLoggedIn && (
@@ -175,7 +175,7 @@ function Header() {
                                             scrollHeaderCss ? "scroll__header" : ""
                                         }`}
                                     >
-                                        Log out
+                                        <Link to="/">Log out</Link>
                                     </button>
                                 </Fragment>
                             )}

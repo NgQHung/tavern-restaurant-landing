@@ -1,9 +1,16 @@
 import React, { Fragment } from "react";
 import "./Main.css";
 import { motion } from "framer-motion";
+import Header from "../../Layouts/Header";
+import Footer from "../../Layouts/Footer";
+import About from "../About";
+import Cta from "../Cta";
+import Menu from "../Menu";
+import Testimonial from "../Testimonial";
 function Main() {
     return (
         <Fragment>
+            <Header />
             <div className="main" id="main">
                 <img
                     className="homeImg"
@@ -69,6 +76,11 @@ function Main() {
                     </div>
                 </div>
             </div>
+            <About />
+            <Menu />
+            <Cta />
+            <Testimonial />
+            <Footer />
         </Fragment>
     );
 }
