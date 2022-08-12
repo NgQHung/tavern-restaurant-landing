@@ -3,12 +3,13 @@ import { useParams } from "react-router-dom";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "framer-motion";
 import "./Header.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionsAction } from "../../store/actions-slice";
 
 function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
     const [activeLink, setActiveLink] = useState("");
+    const isLoggedIn = useSelector((state) => state.authSlice.isLoggedIn);
     const param = useParams();
     const dispatch = useDispatch();
 
@@ -145,18 +146,30 @@ function Header() {
                     </div>
                     <div className="account">
                         <ul className="account__list">
-                            <button
-                                onClick={loginHandler}
-                                className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}
-                            >
-                                <Link to="/login">Login</Link>
-                            </button>
-                            <button
-                                onClick={signupHandler}
-                                className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
-                            >
-                                <Link to="/signup">Sign up</Link>
-                            </button>
+                            {!isLoggedIn && (
+                                <button
+                                    onClick={loginHandler}
+                                    className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}
+                                >
+                                    <Link to="/login">Login</Link>
+                                </button>
+                            )}
+                            {!isLoggedIn && (
+                                <button
+                                    onClick={signupHandler}
+                                    className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
+                                >
+                                    <Link to="/signup">Sign up</Link>
+                                </button>
+                            )}
+                            {isLoggedIn && (
+                                <button
+                                    onClick={signupHandler}
+                                    className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
+                                >
+                                    <Link to="/signup">Log out</Link>
+                                </button>
+                            )}
                         </ul>
                     </div>
                 </div>
