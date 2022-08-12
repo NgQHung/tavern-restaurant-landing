@@ -1,3 +1,4 @@
+import { actionsAction } from "./actions-slice";
 import { authActions } from "./Auth-slice";
 
 const urlSignup = "/api/user/signup";
@@ -36,6 +37,7 @@ export const userSignup = (data) => {
         try {
             const data = await SendRequest();
             dispatch(authActions.login(user));
+            dispatch(actionsAction.closeSignup());
         } catch (error) {
             console.log(error);
         }
@@ -66,6 +68,7 @@ export const userLogin = (data) => {
         try {
             const data = await SendRequest();
             dispatch(authActions.login(user));
+            dispatch(actionsAction.closeLogin());
         } catch (error) {
             console.log(error);
         }

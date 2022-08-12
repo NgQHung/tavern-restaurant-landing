@@ -11,7 +11,7 @@ function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
     const [activeLink, setActiveLink] = useState("");
     const isLoggedIn = useSelector((state) => state.authSlice.isLoggedIn);
-    const param = useParams();
+    const email = useSelector((state) => state.authSlice.email);
     const dispatch = useDispatch();
 
     const changeHeader = () => {
@@ -155,7 +155,7 @@ function Header() {
                                     onClick={loginHandler}
                                     className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}
                                 >
-                                    <Link to="/login">Login</Link>
+                                    Login
                                 </button>
                             )}
                             {!isLoggedIn && (
@@ -163,16 +163,21 @@ function Header() {
                                     onClick={signupHandler}
                                     className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
                                 >
-                                    <Link to="/signup">Sign up</Link>
+                                    Sign up
                                 </button>
                             )}
                             {isLoggedIn && (
-                                <button
-                                    onClick={logoutHandler}
-                                    className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
-                                >
-                                    <Link to="/signup">Log out</Link>
-                                </button>
+                                <Fragment>
+                                    <span>{email}</span>
+                                    <button
+                                        onClick={logoutHandler}
+                                        className={`signup ${
+                                            scrollHeaderCss ? "scroll__header" : ""
+                                        }`}
+                                    >
+                                        Log out
+                                    </button>
+                                </Fragment>
                             )}
                         </ul>
                     </div>
