@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { actionsAction } from "../../store/actions-slice";
+import { authActions } from "../../store/Auth-slice";
 
 function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
@@ -28,6 +29,9 @@ function Header() {
     const loginHandler = () => {
         dispatch(actionsAction.openLogin());
         dispatch(actionsAction.handleCart());
+    };
+    const logoutHandler = () => {
+        dispatch(authActions.logout());
     };
 
     // Link handle
@@ -164,7 +168,7 @@ function Header() {
                             )}
                             {isLoggedIn && (
                                 <button
-                                    onClick={signupHandler}
+                                    onClick={logoutHandler}
                                     className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
                                 >
                                     <Link to="/signup">Log out</Link>
