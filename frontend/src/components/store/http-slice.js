@@ -1,9 +1,12 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux/es/exports";
 import { authActions } from "./Auth-slice";
 
 const urlSignup = "/api/user/signup";
 const urlLogin = "/api/user/login";
 
 export const userSignup = (data) => {
+    let user;
     return async (dispatch) => {
         const {
             // firstNameInput, lastNameInput,
@@ -27,20 +30,16 @@ export const userSignup = (data) => {
             if (!response.ok) {
                 throw new Error("failed to post data");
             } else {
-                localStorage.setItem("user", JSON.stringify(json));
-                console.log(JSON.stringify(json));
+                // localStorage.setItem("user", JSON.stringify(json));
+                // console.log(JSON.stringify(json));
+                user = JSON.stringify(json);
                 console.log("data sent");
             }
             // return data;
         };
         try {
             const data = await SendRequest();
-            // dispatch({
-            //     // firstNameInput: firstNameInput,
-            //     // lastNameInput: lastNameInput,
-            //     emailInput: emailInput,
-            //     passwordInput: passwordInput,
-            // });
+            dispatch(authActions.login(user));
         } catch (error) {
             console.log(error);
         }

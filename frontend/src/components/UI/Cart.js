@@ -8,6 +8,7 @@ import { userSignup } from "../store/http-slice";
 
 function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     const dispatch = useDispatch();
+
     const { title, firstName, lastName, email, password } = cartContent;
 
     const {
