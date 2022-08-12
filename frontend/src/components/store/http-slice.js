@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux/es/exports";
 import { authActions } from "./Auth-slice";
 
 const urlSignup = "/api/user/signup";
@@ -28,14 +26,42 @@ export const userSignup = (data) => {
             const json = await response.json();
             console.log(json);
             if (!response.ok) {
-                throw new Error("failed to post data");
+                throw new Error("Something went wrong");
             } else {
-                // localStorage.setItem("user", JSON.stringify(json));
-                // console.log(JSON.stringify(json));
                 user = JSON.stringify(json);
-                console.log("data sent");
+                console.log("You are Signed up");
             }
             // return data;
+        };
+        try {
+            const data = await SendRequest();
+            dispatch(authActions.login(user));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+export const userLogin = (data) => {
+    console.log(data);
+    let user;
+    return async (dispatch) => {
+        const { emailInput, passwordInput } = data;
+        const SendRequest = async () => {
+            const response = await fetch(urlLogin, {
+                method: "POST",
+                body: JSON.stringify({ email: emailInput, password: passwordInput }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const json = await response.json();
+            console.log(json);
+            if (!response.ok) {
+                throw new Error("Your Email or Password is Incorrect");
+            } else {
+                user = JSON.stringify(json);
+                console.log("You are logged in");
+            }
         };
         try {
             const data = await SendRequest();

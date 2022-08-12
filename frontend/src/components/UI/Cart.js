@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionsAction } from "../store/actions-slice";
 import "./Cart.css";
 import useInput from "../hooks/use-input";
-import { userSignup } from "../store/http-slice";
+import { userLogin, userSignup } from "../store/http-slice";
+import { useNavigate } from "react-router-dom";
 
 function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const isLoggedIn = useSelector((state) => state.authSlice.isLoggedIn);
 
     const { title, firstName, lastName, email, password } = cartContent;
 
@@ -47,7 +50,7 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
         dispatch(actionsAction.closeLogin());
     };
 
-    const submitHandler = (e) => {
+    const signupHandler = (e) => {
         e.preventDefault();
         dispatch(
             userSignup({
@@ -57,6 +60,17 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
                 passwordInput,
             })
         );
+    };
+
+    const loginHandler = (e) => {
+        e.preventDefault();
+        dispatch(
+            userLogin({
+                emailInput,
+                passwordInput,
+            })
+        );
+        console.log(emailInput, passwordInput);
     };
 
     // signup content
@@ -127,20 +141,35 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
                 <div className="input__place">
                     <label>{email}</label>
                 </div>
-                <input type="text" />
+                <input
+                    type="text"
+                    className={`input ${emailHasError ? "invalid" : ""}`}
+                    onBlur={emailOnBlur}
+                    onChange={emailOnChange}
+                    value={emailInput}
+                />
+                {emailHasError && <p>Email is invalid(must have @)</p>}
             </div>
             <div className="input__section">
                 <div className="input__place">
                     <label>{password}</label>
                 </div>
-                <input type="text" />
+                <input
+                    type="text"
+                    className={`input ${passwordHasError ? "invalid" : ""}`}
+                    onBlur={passwordOnBlur}
+                    onChange={passwordOnChange}
+                    value={passwordInput}
+                />
+                {passwordHasError && <p>Password must have at least 5</p>}
+                {/* {isLoggedIn && navigate("/")} */}
             </div>
         </Fragment>
     );
 
     return (
         <Modal>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={isLoginOpen ? loginHandler : signupHandler}>
                 <div className="content__place">
                     {isLoginOpen && loginContent}
                     {isSignupOpen && signupContent}
