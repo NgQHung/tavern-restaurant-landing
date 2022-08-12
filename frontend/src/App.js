@@ -8,6 +8,8 @@ import Menu from "./components/Pages/Menu";
 import Testimonial from "./components/Pages/Testimonial";
 import Cart from "./components/UI/Cart";
 import { useSelector } from "react-redux/es/exports";
+import { Route, Routes } from "react-router-dom";
+// import { Switch } from "react-router-dom";
 
 function App() {
     const isSignupOpen = useSelector((state) => state.actionsSlice.isSignupOpen);

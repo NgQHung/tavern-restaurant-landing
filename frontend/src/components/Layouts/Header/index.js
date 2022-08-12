@@ -149,13 +149,13 @@ function Header() {
                                 onClick={loginHandler}
                                 className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}
                             >
-                                <li>Login</li>
+                                <Link to="/login">Login</Link>
                             </button>
                             <button
                                 onClick={signupHandler}
                                 className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
                             >
-                                <li>Sign up</li>
+                                <Link to="/signup">Sign up</Link>
                             </button>
                         </ul>
                     </div>

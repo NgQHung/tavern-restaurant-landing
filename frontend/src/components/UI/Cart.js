@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import Modal from "./Modal";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionsAction } from "../store/actions-slice";
 import "./Cart.css";
 import useInput from "../hooks/use-input";
-import { createDataSignup } from "../store/http-slice";
+import { userSignup } from "../store/http-slice";
 
 function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     const dispatch = useDispatch();
@@ -49,9 +49,9 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(
-            createDataSignup({
-                firstNameInput,
-                lastNameInput,
+            userSignup({
+                // firstNameInput,
+                // lastNameInput,
                 emailInput,
                 passwordInput,
             })
@@ -63,7 +63,7 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
         <Fragment>
             <h3 className="title__modal">{title}</h3>
 
-            <div className="input__section">
+            {/* <div className="input__section">
                 <div className="input__place">
                     <label>{firstName}</label>
                 </div>
@@ -88,7 +88,7 @@ function Cart({ cartContent, isSignupOpen, isLoginOpen }) {
                     value={lastNameInput}
                 />
                 {lastNameHasError && <p>Last name must not be empty</p>}
-            </div>
+            </div> */}
             <div className="input__section">
                 <div className="input__place">
                     <label>{email}</label>
