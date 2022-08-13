@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "framer-motion";
 import "./Header.css";
@@ -10,7 +10,8 @@ import { authActions } from "../../store/Auth-slice";
 function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
     const [activeLink, setActiveLink] = useState("");
-    const isLoggedIn = useSelector((state) => state.authSlice.isLoggedIn);
+    const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
     const email = useSelector((state) => state.authSlice.email);
     const dispatch = useDispatch();
 
@@ -22,16 +23,20 @@ function Header() {
         }
     };
 
-    const signupHandler = () => {
-        dispatch(actionsAction.openSignup());
+    const signupHandler = (e) => {
+        e.preventDefault();
         dispatch(actionsAction.handleCart());
     };
-    const loginHandler = () => {
-        dispatch(actionsAction.openLogin());
+    const loginHandler = (e) => {
+        e.preventDefault();
+
         dispatch(actionsAction.handleCart());
     };
-    const logoutHandler = () => {
+    const logoutHandler = (e) => {
+        e.preventDefault();
+
         dispatch(authActions.logout());
+        navigate("/");
     };
 
     // Link handle
@@ -150,27 +155,30 @@ function Header() {
                     </div>
                     <div className="account">
                         <ul className="account__list">
-                            {!isLoggedIn && (
+                            {!user && (
                                 <button
                                     onClick={loginHandler}
+                                    type="button"
                                     className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}
                                 >
                                     <Link to="/login">Login</Link>
                                 </button>
                             )}
-                            {!isLoggedIn && (
+                            {!user && (
                                 <button
                                     onClick={signupHandler}
+                                    type="button"
                                     className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
                                 >
                                     <Link to="/signup">Sign up</Link>
                                 </button>
                             )}
-                            {isLoggedIn && (
+                            {user && (
                                 <Fragment>
-                                    <span>{email}</span>
+                                    <span>{user.email}</span>
                                     <button
                                         onClick={logoutHandler}
+                                        type="button"
                                         className={`signup ${
                                             scrollHeaderCss ? "scroll__header" : ""
                                         }`}

@@ -40,11 +40,11 @@ export const userSignup = (data) => {
             dispatch(actionsAction.closeSignup());
         } catch (error) {
             console.log(error);
+            dispatch(authActions.setError());
         }
     };
 };
 export const userLogin = (data) => {
-    console.log(data);
     let user;
     return async (dispatch) => {
         const { emailInput, passwordInput } = data;

@@ -11,6 +11,7 @@ function Cart() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+    const hasError = useSelector((state) => state.authSlice.hasError);
 
     const {
         input: firstNameInput,
@@ -43,7 +44,8 @@ function Cart() {
         inputOnChange: passwordOnChange,
     } = useInput((input) => input.length > 5);
 
-    const backHandler = () => {
+    const backHandler = (e) => {
+        e.preventDefault();
         navigate("/");
     };
 
@@ -57,6 +59,9 @@ function Cart() {
                 passwordInput,
             })
         );
+        navigate("/");
+        if (!hasError) {
+        }
     };
 
     const loginHandler = (e) => {
@@ -67,7 +72,7 @@ function Cart() {
                 passwordInput,
             })
         );
-        console.log(emailInput, passwordInput);
+        // navigate("/");
     };
 
     // signup content
@@ -133,6 +138,7 @@ function Cart() {
     // login content
     const loginContent = (
         <Fragment>
+            {/* <div className="modal"> */}
             <h3 className="title__modal">Login Modal</h3>
             <div className="input__section">
                 <div className="input__place">
@@ -159,15 +165,15 @@ function Cart() {
                     value={passwordInput}
                 />
                 {passwordHasError && <p>Password must have at least 5</p>}
-                {/* {isLoggedIn && navigate("/")} */}
             </div>
+            {/* </div> */}
         </Fragment>
     );
     const pathName = location.pathname;
 
     return (
         // <Modal>
-        <form onSubmit={pathName === "/login" ? loginHandler : signupHandler}>
+        <form className="modal" onSubmit={pathName === "/login" ? loginHandler : signupHandler}>
             <div className="content__place">
                 {pathName === "/login" && loginContent}
                 {pathName === "/signup" && signupContent}
@@ -178,6 +184,7 @@ function Cart() {
                     Back
                 </button>
             </div>
+            <div>{hasError && <p>Your Email || Password is Incorrect</p>}</div>
         </form>
         // </Modal>
     );

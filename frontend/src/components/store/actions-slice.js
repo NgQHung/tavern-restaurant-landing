@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialValue = { isSignupOpen: false, isLoginOpen: false, cartContent: null };
+const initialValue = { cartContent: null };
 
 const actionsSlice = createSlice({
     name: "actions",
