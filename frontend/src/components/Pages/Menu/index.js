@@ -1,12 +1,12 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
-import MenuCard from "../../UI/MenuCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import "./Menu.css";
-import { useSelector, useDispatch } from "react-redux";
-import { swipeSliceActions } from "../../store/swipeSlide-slice";
-import { motion } from "framer-motion";
-import { MENU__DATA } from "../../data/Data";
+import React, {Fragment, useEffect, useRef, useState} from 'react';
+import MenuCard from '../../UI/MenuCard';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import './Menu.css';
+import {useDispatch} from 'react-redux';
+import {swipeSliceActions} from '../../store/swipeSlide-slice';
+import {motion} from 'framer-motion';
+import {MENU__DATA} from '../../data/Data';
 
 function Menu() {
     const dispatch = useDispatch();
@@ -28,21 +28,19 @@ function Menu() {
     return (
         <Fragment>
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
                 className="menu section"
-                id="menu"
-            >
+                id="menu">
                 <div className="menu__container container grid">
                     <motion.div
-                        initial={{ y: "-10vh", opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.5, type: "tween" }}
-                        className="menu__arrow"
-                    >
+                        initial={{y: '-10vh', opacity: 0}}
+                        animate={{y: 0, opacity: 1}}
+                        transition={{delay: 0.5, type: 'tween'}}
+                        className="menu__arrow">
                         <div className="menu__title">
                             <h2>Order Best Menu</h2>
-                            <p className="menu__text" style={{ color: "#555B5A" }}>
+                            <p className="menu__text" style={{color: '#555B5A'}}>
                                 Check out our best menu and order the best delicious
                                 <br /> food that suit to you.
                             </p>
@@ -52,8 +50,7 @@ function Menu() {
                                 // initial={{ x: "100vw", opacity: 0 }}
                                 // animate={{ x: 0, opacity: 1 }}
                                 // transition={{ delay: 1, type: "spring" }}
-                                className="icons grid"
-                            >
+                                className="icons grid">
                                 <div className="arrow__left">
                                     <FontAwesomeIcon icon={faArrowLeft} />
                                 </div>
@@ -66,18 +63,16 @@ function Menu() {
                     <motion.div className="menu__list">
                         <motion.div
                             drag="x"
-                            dragConstraints={{ right: 0, left: -width }}
+                            dragConstraints={{right: 0, left: -width}}
                             ref={swipe}
-                            className="menu__list__container"
-                        >
+                            className="menu__list__container">
                             {MENU__DATA.map((item, index) => {
                                 return (
                                     <motion.div
-                                        initial={{ y: "10vh", opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ delay: 0.5, type: "tween" }}
-                                        key={item.id}
-                                    >
+                                        initial={{y: '10vh', opacity: 0}}
+                                        animate={{y: 0, opacity: 1}}
+                                        transition={{delay: 0.5, type: 'tween'}}
+                                        key={item.id}>
                                         <MenuCard
                                             image={item.image}
                                             title={item.title}

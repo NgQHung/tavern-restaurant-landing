@@ -1,9 +1,8 @@
-import React, { Fragment } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
-import { TESTIMONIAL__DATA } from "../../data/Data";
-import "./Testimonial.css";
+import React, {Fragment} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faStar, faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import {motion} from 'framer-motion';
+import './Testimonial.css';
 
 function Testimonial() {
     return (
@@ -30,7 +29,7 @@ function Testimonial() {
                                     <FontAwesomeIcon icon={faStar} />
                                 </div>
                                 <div className="testimonial__text">
-                                    “They are the best people. And this is the suitable platform to{" "}
+                                    “They are the best people. And this is the suitable platform to{' '}
                                     <br /> ordering food online. I have enjoyed a lotto order with
                                     them. They <br /> are very helpful and fasterpeople.”
                                 </div>
@@ -40,8 +39,7 @@ function Testimonial() {
                                     // initial={{ x: "100vw", opacity: 0 }}
                                     // animate={{ x: 0, opacity: 1 }}
                                     // transition={{ delay: 1, type: "spring" }}
-                                    className="icons grid"
-                                >
+                                    className="icons grid">
                                     <div className="arrow__left">
                                         <FontAwesomeIcon icon={faArrowLeft} />
                                     </div>

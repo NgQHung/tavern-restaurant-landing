@@ -1,12 +1,10 @@
-import React, {Fragment, useEffect} from 'react';
-import Modal from './Modal';
+import React, {Fragment} from 'react';
 import {useDispatch, useSelector} from 'react-redux/es/exports';
-import {actionsAction} from '../store/actions-slice';
 import './Cart.css';
 import useInput from '../hooks/use-input';
 import {userLogin, userSignup} from '../store/http-slice';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
-import {ToastContainer, toast} from 'react-toastify';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 function Cart() {
     const dispatch = useDispatch();
@@ -16,21 +14,18 @@ function Cart() {
 
     const {
         input: firstNameInput,
-        isValid: firstNameIsValid,
         isInvalid: firstNameHasError,
         inputOnBlur: firstNameOnBlur,
         inputOnChange: firstNameOnChange,
     } = useInput((input) => input.trim() !== '');
     const {
         input: lastNameInput,
-        isValid: lastNameIsValid,
         isInvalid: lastNameHasError,
         inputOnBlur: lastNameOnBlur,
         inputOnChange: lastNameOnChange,
     } = useInput((input) => input.trim() !== '');
     const {
         input: emailInput,
-        isValid: emailIsValid,
         isInvalid: emailHasError,
 
         inputOnBlur: emailOnBlur,
@@ -38,9 +33,7 @@ function Cart() {
     } = useInput((input) => input.includes('@'));
     const {
         input: passwordInput,
-        isValid: passwordIsValid,
         isInvalid: passwordHasError,
-
         inputOnBlur: passwordOnBlur,
         inputOnChange: passwordOnChange,
     } = useInput((input) => input.length > 5);

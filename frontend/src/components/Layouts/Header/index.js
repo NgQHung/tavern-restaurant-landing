@@ -1,18 +1,17 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { HashLink as Link } from "react-router-hash-link";
-import { motion } from "framer-motion";
-import "./Header.css";
-import { useDispatch, useSelector } from "react-redux";
-import { actionsAction } from "../../store/actions-slice";
-import { authActions } from "../../store/Auth-slice";
+import React, {Fragment, useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {HashLink as Link} from 'react-router-hash-link';
+import {motion} from 'framer-motion';
+import './Header.css';
+import {useDispatch} from 'react-redux';
+import {actionsAction} from '../../store/actions-slice';
+import {authActions} from '../../store/Auth-slice';
 
 function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
-    const [activeLink, setActiveLink] = useState("");
+    const [activeLink, setActiveLink] = useState('');
     const navigate = useNavigate();
-    const user = JSON.parse(localStorage.getItem("user"));
-    const email = useSelector((state) => state.authSlice.email);
+    const user = JSON.parse(localStorage.getItem('user'));
     const dispatch = useDispatch();
 
     const changeHeader = () => {
@@ -36,7 +35,7 @@ function Header() {
         e.preventDefault();
 
         dispatch(authActions.logout());
-        navigate("/");
+        navigate('/');
     };
 
     // Link handle
@@ -48,12 +47,12 @@ function Header() {
 
     useEffect(() => {
         changeHeader();
-        window.addEventListener("scroll", changeHeader);
+        window.addEventListener('scroll', changeHeader);
     });
 
     const motionCss1 = {
         hidden: {
-            y: "-10vh",
+            y: '-10vh',
         },
         visible: {
             y: 0,
@@ -62,14 +61,14 @@ function Header() {
             scale: 1.1,
             transition: {
                 repeat: Infinity,
-                repeatType: "reverse",
+                repeatType: 'reverse',
             },
         },
     };
 
     return (
         <Fragment>
-            <div className={`header ${scrollHeaderCss ? "scroll__header" : ""}`}>
+            <div className={`header ${scrollHeaderCss ? 'scroll__header' : ''}`}>
                 <div className="nav container">
                     <div className="logo">
                         Tav<span>ern</span>
@@ -81,13 +80,11 @@ function Header() {
                                 initial="hidden"
                                 animate="visible"
                                 whileHover="hover"
-                                onClick={() => linkHandler("main")}
-                            >
+                                onClick={() => linkHandler('main')}>
                                 <Link
                                     smooth
                                     to="#main"
-                                    className={activeLink === "main" ? "active-link" : ""}
-                                >
+                                    className={activeLink === 'main' ? 'active-link' : ''}>
                                     Home
                                 </Link>
                             </motion.li>
@@ -96,13 +93,11 @@ function Header() {
                                 initial="hidden"
                                 animate="visible"
                                 whileHover="hover"
-                                onClick={() => linkHandler("about")}
-                            >
+                                onClick={() => linkHandler('about')}>
                                 <Link
                                     smooth
                                     to="#about"
-                                    className={activeLink === "about" ? "active-link" : ""}
-                                >
+                                    className={activeLink === 'about' ? 'active-link' : ''}>
                                     About Us
                                 </Link>
                             </motion.li>
@@ -111,13 +106,11 @@ function Header() {
                                 initial="hidden"
                                 animate="visible"
                                 whileHover="hover"
-                                onClick={() => linkHandler("menu")}
-                            >
+                                onClick={() => linkHandler('menu')}>
                                 <Link
                                     smooth
                                     to="#menu"
-                                    className={activeLink === "menu" ? "active-link" : ""}
-                                >
+                                    className={activeLink === 'menu' ? 'active-link' : ''}>
                                     Menu
                                 </Link>
                             </motion.li>
@@ -126,13 +119,11 @@ function Header() {
                                 initial="hidden"
                                 animate="visible"
                                 whileHover="hover"
-                                onClick={() => linkHandler("testimonial")}
-                            >
+                                onClick={() => linkHandler('testimonial')}>
                                 <Link
                                     smooth
                                     to="#testimonial"
-                                    className={activeLink === "testimonial" ? "active-link" : ""}
-                                >
+                                    className={activeLink === 'testimonial' ? 'active-link' : ''}>
                                     Review
                                 </Link>
                             </motion.li>
@@ -141,13 +132,11 @@ function Header() {
                                 initial="hidden"
                                 animate="visible"
                                 whileHover="hover"
-                                onClick={() => linkHandler("cta")}
-                            >
+                                onClick={() => linkHandler('cta')}>
                                 <Link
                                     smooth
                                     to="#cta"
-                                    className={activeLink === "cta" ? "active-link" : ""}
-                                >
+                                    className={activeLink === 'cta' ? 'active-link' : ''}>
                                     Contact Us
                                 </Link>
                             </motion.li>
@@ -159,8 +148,7 @@ function Header() {
                                 <button
                                     onClick={loginHandler}
                                     type="button"
-                                    className={`login ${scrollHeaderCss ? "scroll__header" : ""}`}
-                                >
+                                    className={`login ${scrollHeaderCss ? 'scroll__header' : ''}`}>
                                     <Link to="/login">Login</Link>
                                 </button>
                             )}
@@ -168,8 +156,7 @@ function Header() {
                                 <button
                                     onClick={signupHandler}
                                     type="button"
-                                    className={`signup ${scrollHeaderCss ? "scroll__header" : ""}`}
-                                >
+                                    className={`signup ${scrollHeaderCss ? 'scroll__header' : ''}`}>
                                     <Link to="/signup">Sign up</Link>
                                 </button>
                             )}
@@ -180,9 +167,8 @@ function Header() {
                                         onClick={logoutHandler}
                                         type="button"
                                         className={`signup ${
-                                            scrollHeaderCss ? "scroll__header" : ""
-                                        }`}
-                                    >
+                                            scrollHeaderCss ? 'scroll__header' : ''
+                                        }`}>
                                         <Link to="/">Log out</Link>
                                     </button>
                                 </Fragment>

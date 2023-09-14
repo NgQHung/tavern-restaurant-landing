@@ -1,10 +1,9 @@
-import React from "react";
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
 
-const initialValue = { current: 0, swipeClicked: false, indexSwiped: 4 };
+const initialValue = {current: 0, swipeClicked: false, indexSwiped: 4};
 
 const swipeSlide = createSlice({
-    name: "swipeSlice",
+    name: 'swipeSlice',
     initialState: initialValue,
     reducers: {
         swipe(state, payload) {

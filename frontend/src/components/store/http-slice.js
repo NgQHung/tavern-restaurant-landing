@@ -35,7 +35,7 @@ export const userSignup = (data) => {
             // return data;
         };
         try {
-            const data = await SendRequest();
+            await SendRequest();
             dispatch(authActions.login(user));
             dispatch(actionsAction.closeSignup());
         } catch (error) {
@@ -69,7 +69,7 @@ export const userLogin = (data) => {
             }
         };
         try {
-            const data = await SendRequest();
+            await SendRequest();
             dispatch(authActions.login(user));
         } catch (error) {
             console.log(error);

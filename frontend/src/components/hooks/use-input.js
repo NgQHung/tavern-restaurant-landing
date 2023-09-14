@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import {useState} from 'react';
 
 function useInput(valiateInput) {
-    // console.log(valiateInput);
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState('');
     const [isTouched, setIsTouched] = useState(false);
 
     const isValid = valiateInput(input);
