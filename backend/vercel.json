@@ -1,0 +1,17 @@
+{
+    "version": 2,
+    "builds": [
+        {"src": "/routes/**/*.ks", "use": "@vercel/node"},
+        {"src": "/server.js", "use": "@vercel/node"}
+    ],
+    "env": {
+        "MONGO_URI": "mongodb+srv://HungNguyenQuang:123@cluster0.ysrvy.mongodb.net/?retryWrites=true&w=majority",
+        "PORT": "8080",
+        "SECRET": "hungnguyenquangisakinghelloworld"
+    },
+    "routes": [
+        {"src": "/(.*)", "dest": "/server.js"},
+        {"src": "/api/tavern/", "dest": "/routes/routes.js"},
+        {"src": "/api/user/", "dest": "/routes/userRoutes.js"}
+    ]
+}
