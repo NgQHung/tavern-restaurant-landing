@@ -1,8 +1,8 @@
 {
     "version": 2,
     "builds": [
-        {"src": "/routes/**/*.ks", "use": "@vercel/node"},
-        {"src": "/server.js", "use": "@vercel/node"}
+        {"src": "./routes/**/*.ks", "use": "@vercel/node"},
+        {"src": "./server.js", "use": "@vercel/node"}
     ],
     "env": {
         "MONGO_URI": "mongodb+srv://HungNguyenQuang:123@cluster0.ysrvy.mongodb.net/?retryWrites=true&w=majority",
