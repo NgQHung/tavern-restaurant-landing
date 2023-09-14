@@ -1,11 +1,12 @@
-import React, { Fragment, useEffect } from "react";
-import Modal from "./Modal";
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { actionsAction } from "../store/actions-slice";
-import "./Cart.css";
-import useInput from "../hooks/use-input";
-import { userLogin, userSignup } from "../store/http-slice";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import React, {Fragment, useEffect} from 'react';
+import Modal from './Modal';
+import {useDispatch, useSelector} from 'react-redux/es/exports';
+import {actionsAction} from '../store/actions-slice';
+import './Cart.css';
+import useInput from '../hooks/use-input';
+import {userLogin, userSignup} from '../store/http-slice';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import {ToastContainer, toast} from 'react-toastify';
 
 function Cart() {
     const dispatch = useDispatch();
@@ -19,14 +20,14 @@ function Cart() {
         isInvalid: firstNameHasError,
         inputOnBlur: firstNameOnBlur,
         inputOnChange: firstNameOnChange,
-    } = useInput((input) => input.trim() !== "");
+    } = useInput((input) => input.trim() !== '');
     const {
         input: lastNameInput,
         isValid: lastNameIsValid,
         isInvalid: lastNameHasError,
         inputOnBlur: lastNameOnBlur,
         inputOnChange: lastNameOnChange,
-    } = useInput((input) => input.trim() !== "");
+    } = useInput((input) => input.trim() !== '');
     const {
         input: emailInput,
         isValid: emailIsValid,
@@ -34,7 +35,7 @@ function Cart() {
 
         inputOnBlur: emailOnBlur,
         inputOnChange: emailOnChange,
-    } = useInput((input) => input.includes("@"));
+    } = useInput((input) => input.includes('@'));
     const {
         input: passwordInput,
         isValid: passwordIsValid,
@@ -46,11 +47,27 @@ function Cart() {
 
     const backHandler = (e) => {
         e.preventDefault();
-        navigate("/");
+        navigate('/');
     };
 
     const signupHandler = (e) => {
         e.preventDefault();
+        if (firstNameHasError) {
+            toast.error('First name must not be empty');
+            return;
+        }
+        if (lastNameHasError) {
+            toast.error('Last name must not be empty');
+            return;
+        }
+        if (emailHasError) {
+            toast.error('Email is invalid(must have @)');
+            return;
+        }
+        if (passwordHasError) {
+            toast.error('Password must have at least 5');
+            return;
+        }
         dispatch(
             userSignup({
                 // firstNameInput,
@@ -59,20 +76,40 @@ function Cart() {
                 passwordInput,
             })
         );
-        navigate("/");
-        if (!hasError) {
+
+        if (hasError) {
+            toast.error('Your Email && Password is Incorrect');
+            return;
+        } else {
+            navigate('/');
+            toast.error('You are signed up successfully');
         }
     };
 
     const loginHandler = (e) => {
         e.preventDefault();
+        if (emailHasError) {
+            toast.error('Email is invalid(must have @)');
+            return;
+        }
+        if (passwordHasError) {
+            toast.error('Password must have at least 5');
+            return;
+        }
         dispatch(
             userLogin({
                 emailInput,
                 passwordInput,
             })
         );
-        // navigate("/");
+
+        if (hasError) {
+            toast.error('Your Email && Password is Incorrect');
+            return;
+        } else {
+            navigate('/');
+            toast.error('You are logged up successfully');
+        }
     };
 
     // signup content
@@ -85,13 +122,12 @@ function Cart() {
                     <label>Your First Name</label>
                 </div>
                 <input
-                    className={`input ${firstNameHasError ? "invalid" : ""}`}
+                    className={`input ${firstNameHasError ? 'invalid' : ''}`}
                     onBlur={firstNameOnBlur}
                     onChange={firstNameOnChange}
                     type="text"
                     value={firstNameInput}
                 />
-                {firstNameHasError && <p>First name must not be empty</p>}
             </div>
             <div className="input__section">
                 <div className="input__place">
@@ -99,12 +135,11 @@ function Cart() {
                 </div>
                 <input
                     type="text"
-                    className={`input ${lastNameHasError ? "invalid" : ""}`}
+                    className={`input ${lastNameHasError ? 'invalid' : ''}`}
                     onBlur={lastNameOnBlur}
                     onChange={lastNameOnChange}
                     value={lastNameInput}
                 />
-                {lastNameHasError && <p>Last name must not be empty</p>}
             </div>
             <div className="input__section">
                 <div className="input__place">
@@ -112,12 +147,11 @@ function Cart() {
                 </div>
                 <input
                     type="text"
-                    className={`input ${emailHasError ? "invalid" : ""}`}
+                    className={`input ${emailHasError ? 'invalid' : ''}`}
                     onBlur={emailOnBlur}
                     onChange={emailOnChange}
                     value={emailInput}
                 />
-                {emailHasError && <p>Email is invalid(must have @)</p>}
             </div>
             <div className="input__section">
                 <div className="input__place">
@@ -125,12 +159,11 @@ function Cart() {
                 </div>
                 <input
                     type="text"
-                    className={`input ${passwordHasError ? "invalid" : ""}`}
+                    className={`input ${passwordHasError ? 'invalid' : ''}`}
                     onBlur={passwordOnBlur}
                     onChange={passwordOnChange}
                     value={passwordInput}
                 />
-                {passwordHasError && <p>Password must have at least 5</p>}
             </div>
         </Fragment>
     );
@@ -146,12 +179,11 @@ function Cart() {
                 </div>
                 <input
                     type="text"
-                    className={`input ${emailHasError ? "invalid" : ""}`}
+                    className={`input ${emailHasError ? 'invalid' : ''}`}
                     onBlur={emailOnBlur}
                     onChange={emailOnChange}
                     value={emailInput}
                 />
-                {emailHasError && <p>Email is invalid(must have @)</p>}
             </div>
             <div className="input__section">
                 <div className="input__place">
@@ -159,12 +191,11 @@ function Cart() {
                 </div>
                 <input
                     type="text"
-                    className={`input ${passwordHasError ? "invalid" : ""}`}
+                    className={`input ${passwordHasError ? 'invalid' : ''}`}
                     onBlur={passwordOnBlur}
                     onChange={passwordOnChange}
                     value={passwordInput}
                 />
-                {passwordHasError && <p>Password must have at least 5</p>}
             </div>
             {/* </div> */}
         </Fragment>
@@ -173,10 +204,10 @@ function Cart() {
 
     return (
         // <Modal>
-        <form className="modal" onSubmit={pathName === "/login" ? loginHandler : signupHandler}>
+        <form className="modal" onSubmit={pathName === '/login' ? loginHandler : signupHandler}>
             <div className="content__place">
-                {pathName === "/login" && loginContent}
-                {pathName === "/signup" && signupContent}
+                {pathName === '/login' && loginContent}
+                {pathName === '/signup' && signupContent}
             </div>
             <div className="input__button">
                 <button className="submit">Submit</button>
@@ -184,7 +215,11 @@ function Cart() {
                     Back
                 </button>
             </div>
-            <div>{hasError && <p>Your Email || Password is Incorrect</p>}</div>
+            <div>
+                <button type="button" onClick={() => navigate('/signup')}>
+                    Signup
+                </button>
+            </div>
         </form>
         // </Modal>
     );
