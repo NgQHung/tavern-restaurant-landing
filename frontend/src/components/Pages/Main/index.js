@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import "./Main.css";
-import { motion } from "framer-motion";
-import Header from "../../Layouts/Header";
-import Footer from "../../Layouts/Footer";
-import About from "../About";
-import Cta from "../Cta";
-import Menu from "../Menu";
-import Testimonial from "../Testimonial";
+import React, {Fragment, useEffect} from 'react';
+import './Main.css';
+import {motion} from 'framer-motion';
+import Header from '../../Layouts/Header';
+import Footer from '../../Layouts/Footer';
+import About from '../About';
+import Cta from '../Cta';
+import Menu from '../Menu';
+import Testimonial from '../Testimonial';
 function Main() {
     return (
         <Fragment>
@@ -20,11 +20,10 @@ function Main() {
                 />
                 <div className="home section container grid">
                     <motion.div
-                        initial={{ x: "-10vw", opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.5, type: "tween" }}
-                        className="home__data"
-                    >
+                        initial={{x: '-10vw', opacity: 0}}
+                        animate={{x: 0, opacity: 1}}
+                        transition={{delay: 0.5, type: 'tween'}}
+                        className="home__data">
                         <div className="home__heading">
                             <h2>
                                 Giving your <br />
@@ -48,22 +47,20 @@ function Main() {
                     </motion.div>
                     <div className="home__img home__grid">
                         <motion.div
-                            initial={{ x: "10vw", opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 0.5, type: "tween" }}
-                            className="home__mainImg"
-                        >
+                            initial={{x: '10vw', opacity: 0}}
+                            animate={{x: 0, opacity: 1}}
+                            transition={{delay: 0.5, type: 'tween'}}
+                            className="home__mainImg">
                             <img
                                 src="https://tavern-restaurant-landing-page.vercel.app/imgs/home.png"
                                 alt="pic"
                             />
                         </motion.div>
                         <motion.div
-                            initial={{ x: "10vw", opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 0.5, type: "tween" }}
-                            className="home__subImg"
-                        >
+                            initial={{x: '10vw', opacity: 0}}
+                            animate={{x: 0, opacity: 1}}
+                            transition={{delay: 0.5, type: 'tween'}}
+                            className="home__subImg">
                             <img
                                 src="https://tavern-restaurant-landing-page.vercel.app/imgs/home2.png"
                                 alt="pic"

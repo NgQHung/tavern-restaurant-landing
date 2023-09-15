@@ -11,7 +11,8 @@ function Header() {
     const [scrollHeaderCss, setScrollHeaderCss] = useState(false);
     const [activeLink, setActiveLink] = useState('');
     const navigate = useNavigate();
-    const user = JSON.parse(localStorage.getItem('user'));
+
+    let user = JSON.parse(localStorage.getItem('user'));
     const dispatch = useDispatch();
 
     const changeHeader = () => {
@@ -28,14 +29,13 @@ function Header() {
     };
     const loginHandler = (e) => {
         e.preventDefault();
-
         dispatch(actionsAction.handleCart());
     };
     const logoutHandler = (e) => {
         e.preventDefault();
-
         dispatch(authActions.logout());
         navigate('/');
+        window.location.reload(false);
     };
 
     // Link handle

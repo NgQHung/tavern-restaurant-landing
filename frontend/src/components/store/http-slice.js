@@ -1,6 +1,7 @@
 import {toast} from 'react-toastify';
 import {actionsAction} from './actions-slice';
 import {authActions} from './Auth-slice';
+import {useNavigate} from 'react-router-dom';
 
 const urlSignup = '/api/user/signup';
 const urlLogin = '/api/user/login';
@@ -26,7 +27,7 @@ export const userSignup = (data) => {
                 },
             });
             const json = await response.json();
-            console.log(json);
+            // console.log(json);
             if (!response.ok) {
                 toast.error('Something went wrong');
             } else {
@@ -37,18 +38,19 @@ export const userSignup = (data) => {
         try {
             await SendRequest();
             dispatch(authActions.login(user));
-            dispatch(actionsAction.closeSignup());
+            // dispatch(actionsAction.closeSignup());
         } catch (error) {
             console.log(error);
             toast.error('Something went wrong');
-            dispatch(authActions.setError());
         }
     };
 };
 export const userLogin = (data) => {
     let user;
+
     return async (dispatch) => {
         const {emailInput, passwordInput} = data;
+
         const SendRequest = async () => {
             const response = await fetch(urlLogin, {
                 method: 'POST',
@@ -58,12 +60,9 @@ export const userLogin = (data) => {
                 },
             });
             const json = await response.json();
-            if (json.error) {
-                toast.error(json.error);
-            }
-            // console.log(json);
             if (!response.ok) {
                 toast.error('Your Email or Password is Incorrect');
+                toast.error(json.error);
             } else {
                 user = JSON.stringify(json);
             }

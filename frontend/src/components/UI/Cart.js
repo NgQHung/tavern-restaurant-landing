@@ -1,16 +1,18 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux/es/exports';
 import './Cart.css';
 import useInput from '../hooks/use-input';
 import {userLogin, userSignup} from '../store/http-slice';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
+import Modal from './Modal';
 
 function Cart() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-    const hasError = useSelector((state) => state.authSlice.hasError);
+    const user = useSelector((state) => state.authSlice.user);
+    // let user = JSON.parse(localStorage.getItem('user'));
 
     const {
         input: firstNameInput,
@@ -70,13 +72,8 @@ function Cart() {
             })
         );
 
-        if (hasError) {
-            toast.error('Your Email && Password is Incorrect');
-            return;
-        } else {
-            navigate('/');
-            toast.error('You are signed up successfully');
-        }
+        navigate('/');
+        toast.success('You are signed up successfully');
     };
 
     const loginHandler = (e) => {
@@ -95,15 +92,19 @@ function Cart() {
                 passwordInput,
             })
         );
-
-        if (hasError) {
-            toast.error('Your Email && Password is Incorrect');
-            return;
-        } else {
-            navigate('/');
-            toast.error('You are logged up successfully');
-        }
+        // if (user) {
+        // navigate('/');
+        // }
     };
+    useEffect(() => {
+        console.log('running...');
+        if (user) {
+            navigate('/');
+            toast.success('You are logged up successfully');
+        } else {
+            localStorage.removeItem('user');
+        }
+    }, [user]);
 
     // signup content
     const signupContent = (
@@ -209,9 +210,16 @@ function Cart() {
                 </button>
             </div>
             <div>
-                <button type="button" onClick={() => navigate('/signup')}>
-                    Signup
-                </button>
+                {pathName === '/login' && (
+                    <button type="button" onClick={() => navigate('/signup')}>
+                        Signup
+                    </button>
+                )}
+                {pathName === '/signup' && (
+                    <button type="button" onClick={() => navigate('/login')}>
+                        Login
+                    </button>
+                )}
             </div>
         </form>
         // </Modal>
